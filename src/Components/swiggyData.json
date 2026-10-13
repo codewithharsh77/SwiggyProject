@@ -1,0 +1,67 @@
+{
+  "statusCode": 0,
+  "data": {
+    "suggestions": [
+      {
+        "text": "Burger",
+        "cloudinaryId": "RX_THUMBNAIL/IMAGES/VENDOR/2024/6/11/1d713c88-e244-486a-85ae-a3f1246c0dc8_612269.JPG",
+        "type": "DISH",
+        "subCategory": "Dish"
+      },
+      {
+        "text": "McDonald's",
+        "cloudinaryId": "RX_THUMBNAIL/IMAGES/VENDOR/2024/4/1/f5449752-d748-4303-bee3-706bc75691c9_17529.JPG",
+        "type": "RESTAURANT",
+        "subCategory": "Restaurant"
+      },
+      {
+        "text": "Biryani",
+        "cloudinaryId": "RX_THUMBNAIL/IMAGES/VENDOR/2024/6/11/a6a117d9-0b29-4d6d-bfce-4b2a4729f120_58066.JPG",
+        "type": "DISH",
+        "subCategory": "Dish"
+      },
+      {
+        "text": "Behrouz Biryani",
+        "cloudinaryId": "RX_THUMBNAIL/IMAGES/VENDOR/2024/6/11/a57008af-a6ec-4a25-a134-c36b6932462b_2825.JPG",
+        "type": "RESTAURANT",
+        "subCategory": "Restaurant"
+      },
+      {
+        "text": "Pizza",
+        "cloudinaryId": "RX_THUMBNAIL/IMAGES/VENDOR/2024/6/11/a1f42289-4b68-4545-9275-be8d1209b552_78174.JPG",
+        "type": "DISH",
+        "subCategory": "Dish"
+      },
+      {
+        "text": "Domino's Pizza",
+        "cloudinaryId": "RX_THUMBNAIL/IMAGES/VENDOR/2024/5/15/1580211f-f14d-4566-9ef9-f38b009e53b4_12270.JPG",
+        "type": "RESTAURANT",
+        "subCategory": "Restaurant"
+      },
+      {
+        "text": "Chinese Noodles",
+        "cloudinaryId": "RX_THUMBNAIL/IMAGES/VENDOR/2024/6/11/a3e3518e-4a6c-4861-8208-e8cbdd7260cb_34892.JPG",
+        "type": "DISH",
+        "subCategory": "Dish"
+      },
+      {
+        "text": "Chinese Wok",
+        "cloudinaryId": "e0839ff574213e6f35b3899ebf1fc597",
+        "type": "RESTAURANT",
+        "subCategory": "Restaurant"
+      },
+      {
+        "text": "Rolls",
+        "cloudinaryId": "RX_THUMBNAIL/IMAGES/VENDOR/2024/6/11/7f4a211f-14d4-4866-ae99-f38b009e53b4_45120.JPG",
+        "type": "DISH",
+        "subCategory": "Dish"
+      },
+      {
+        "text": "Faasos - Wraps & Rolls",
+        "cloudinaryId": "RX_THUMBNAIL/IMAGES/VENDOR/2024/7/16/2e90f23f-d31e-450f-908a-2007802161f3_50123.JPG",
+        "type": "RESTAURANT",
+        "subCategory": "Restaurant"
+      }
+    ]
+  }
+}
