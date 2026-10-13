@@ -1,106 +1,65 @@
-import React, { useState } from 'react'
-import swiggyData from './swiggyData.json' 
+import React, { useState } from "react";
+import swiggyData from "./swiggyData.json";
 
 function Search() {
-  const [searchQuery, setSearchQuery] = useState("")
-  const [activeBtn, setActiveBtn] = useState("Dishes")
+    const [searchQuery, setSearchQuery] = useState("");
 
-  const filterOptions = [
-    { filterName: "Restaurant" },
-    { filterName: "Dishes" }
-  ]
+    // Cloudinary image URL
+    const getImageUrl = (cloudinaryId) => {
+        if (!cloudinaryId) return "";
 
-  function handlefilterBtn(filterName) {
-    setActiveBtn(filterName)
-  }
+        return `https://media-assets.swiggy.com/swiggy/image/upload/${cloudinaryId}`;
+    };
 
-  const suggestions = swiggyData?.data?.suggestions || []
+    // Filter suggestions according to search
+    const filteredData = swiggyData.data.suggestions.filter((item) =>
+        item.text.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
-  const filteredData = searchQuery.trim() === "" ? [] : suggestions.filter(item => {
-    const matchesType = activeBtn === "Dishes" ? item.type === "DISH" : item.type === "RESTAURANT";
-    const matchesQuery = item.text.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesType && matchesQuery;
-  });
+    return (
+        <div className="w-full max-w-4xl mx-auto px-4 py-6">
 
-  // ✨ Yeh raha helper function jocloudinaryId ko sahi URL mein convert karega
-  const getImageUrl = (cloudinaryId) => {
-    if (!cloudinaryId) return 'https://via.placeholder.com/150';
-    
-    // Agar id mein pehle se "RX_THUMBNAIL" ya http hai, toh uske hisaab se URL lo
-    if (cloudinaryId.startsWith("http")) {
-      return cloudinaryId;
-    } else if (cloudinaryId.startsWith("RX_THUMBNAIL")) {
-      return `https://media-assets.swiggy.com/swiggy/image/upload/${cloudinaryId}`;
-    } else {
-      return `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300/${cloudinaryId}`;
-    }
-  };
+            {/* Search Input */}
+            <input
+                type="text"
+                placeholder="Search for restaurants and food..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full border border-gray-300 rounded-xl px-4 py-3 outline-none focus:border-orange-500"
+            />
 
-  return (
-    <div className='w-full md:w-[800px] mx-auto p-4'>
+            {/* Search Results */}
+            <div className="mt-5 flex flex-col gap-3">
+                {filteredData.map((item, index) => (
+                    <div
+                        key={item.cloudinaryId || item.text || index}
+                        className="flex items-center gap-4 p-3 border border-gray-200 rounded-xl hover:bg-gray-50"
+                    >
+                        {/* Food Image */}
+                        {item.cloudinaryId && (
+                            <img
+                                src={getImageUrl(item.cloudinaryId)}
+                                alt={item.text || "Food"}
+                                className="w-16 h-16 object-cover rounded-lg"
+                            />
+                        )}
 
-      {/* Search Input */}
-      <input
-        onChange={(e) => setSearchQuery(e.target.value)}
-        value={searchQuery}
-        className='border-2 px-4 py-3 rounded-md focus:outline-none w-full shadow-sm'
-        type="text"
-        placeholder='Search for restaurant and food'
-      />
+                        {/* Food Name */}
+                        <p className="text-gray-800 font-medium">
+                            {item.text}
+                        </p>
+                    </div>
+                ))}
 
-      {/* Filter Buttons */}
-      <div className='flex gap-3 mt-4'>
-        {filterOptions.map((filter) => (
-          <button
-            key={filter.filterName}
-            onClick={() => handlefilterBtn(filter.filterName)}
-            className={`px-5 py-2 rounded-lg border-2 ${
-              activeBtn === filter.filterName
-                ? 'bg-black text-white'
-                : 'bg-white text-black'
-            }`}
-          >
-            {filter.filterName}
-          </button>
-        ))}
-      </div>
-
-      {/* Suggestions Results */}
-      <div className='mt-5'>
-        {searchQuery.trim() !== "" && filteredData.length > 0 ? (
-          filteredData.map((item, index) => {
-            const imageUrl = (cloudinaryId) => {
-              if(!cloudinaryId) return 'https://via.placeholder.com/150';
-              
-              //agar pehle se http hai
-              if(cloudinaryId.startsWith("http")){
-                return cloudinaryId;
-              }
-              //base url with transformation
-              return `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300/${cloudinaryId}`;
-            }
-
-            return (
-              <div key={index} className='flex items-center gap-4 p-3 border-b hover:bg-gray-50 cursor-pointer'>
-                <img 
-                  src={imageUrl} 
-                  alt={item.text} 
-                  className='w-14 h-14 object-cover rounded-md shadow-sm'
-                />
-                <div>
-                  <h4 className='font-semibold text-gray-800'>{item.text}</h4>
-                  <span className='text-xs text-gray-500 uppercase'>{item.subCategory || item.type}</span>
-                </div>
-              </div>
-            );
-          })
-        ) : (
-          searchQuery.trim() !== "" && <p className='text-gray-500 mt-4 text-center'>No results found</p>
-        )}
-      </div>
-
-    </div>
-  )
+                {/* No Results */}
+                {filteredData.length === 0 && (
+                    <p className="text-gray-500 text-center py-6">
+                        No results found.
+                    </p>
+                )}
+            </div>
+        </div>
+    );
 }
 
 export default Search;
