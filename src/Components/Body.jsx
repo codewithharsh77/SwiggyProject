@@ -8,7 +8,7 @@ import Shimmer from "./Shimmer";
 import burgerKing from "../assets/BurgerKing.avif";
 import belgianWaffle from "../assets/BelgianWaffle.avif";
 import baskinRobbin from "../assets/BaskinRobbin.avif";
-import kalraSweet from "../assets/KalraSweetShop.avif";
+import kalraSweet from "../assets/kalraSweetShop.avif";
 import kfc from "../assets/Kfc.avif";
 import Dhaba90s from "../assets/Dhaba90s.avif";
 import punjabhiChaap from "../assets/PunjabhiChaap.avif";
